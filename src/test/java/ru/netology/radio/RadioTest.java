@@ -92,7 +92,7 @@ class RadioTest {
     @Test
     public void testIncreaseVolumeNormalWay() {
         Radio radio = new Radio();
-        radio.currentVolume = 15;
+        radio.setCurrentVolume(15);
 
         radio.increaseVolume();
         int actual = radio.getCurrentVolume();
@@ -104,7 +104,7 @@ class RadioTest {
     @Test
     public void testIncreaseVolumeAboveMax() {
         Radio radio = new Radio();
-        radio.currentVolume = 100;
+        radio.setCurrentVolume(100);
 
         radio.increaseVolume();
         int actual = radio.getCurrentVolume();
@@ -116,7 +116,7 @@ class RadioTest {
     @Test
     public void testDecreaseVolumeNormalWay() {
         Radio radio = new Radio();
-        radio.currentVolume = 15;
+        radio.setCurrentVolume(15);
 
         radio.decreaseVolume();
         int actual = radio.getCurrentVolume();
@@ -128,7 +128,7 @@ class RadioTest {
     @Test
     public void testDecreaseVolumeBelowMin() {
         Radio radio = new Radio();
-        radio.currentVolume = 0;
+        radio.setCurrentVolume(0);
 
         radio.decreaseVolume();
         int actual = radio.getCurrentVolume();
