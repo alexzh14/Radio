@@ -18,8 +18,31 @@ class RadioTest {
     }
 
     @Test
+    public void shouldSetCurrentStationNormalWayManual() {
+        Radio radio = new Radio(15);
+        radio.setCurrentStation(2);
+
+        int actual = radio.getCurrentStation();
+        int expected = 2;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetCurrentStationAboveMax() {
         Radio radio = new Radio();
+        radio.setCurrentStation(2);
+
+        radio.setCurrentStation(20);
+        int actual = radio.getCurrentStation();
+        int expected = 2;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetCurrentStationAboveMaxManual() {
+        Radio radio = new Radio(15);
         radio.setCurrentStation(2);
 
         radio.setCurrentStation(20);
@@ -54,9 +77,33 @@ class RadioTest {
     }
 
     @Test
+    public void testNextNormalWayManual() {
+        Radio radio = new Radio(15);
+        radio.setCurrentStation(11);
+
+        radio.next();
+        int actual = radio.getCurrentStation();
+        int expected = 12;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void testNextAboveNine() {
         Radio radio = new Radio();
         radio.setCurrentStation(9);
+
+        radio.next();
+        int actual = radio.getCurrentStation();
+        int expected = 0;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testNextAboveManualMax() {
+        Radio radio = new Radio(15);
+        radio.setCurrentStation(14);
 
         radio.next();
         int actual = radio.getCurrentStation();
@@ -78,6 +125,18 @@ class RadioTest {
     }
 
     @Test
+    public void testPrevNormalWayManual() {
+        Radio radio = new Radio(15);
+        radio.setCurrentStation(11);
+
+        radio.prev();
+        int actual = radio.getCurrentStation();
+        int expected = 10;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void testPrevBelowZero() {
         Radio radio = new Radio();
         radio.setCurrentStation(0);
@@ -85,6 +144,18 @@ class RadioTest {
         radio.prev();
         int actual = radio.getCurrentStation();
         int expected = 9;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPrevBelowZeroManual() {
+        Radio radio = new Radio(15);
+        radio.setCurrentStation(0);
+
+        radio.prev();
+        int actual = radio.getCurrentStation();
+        int expected = 14;
 
         Assertions.assertEquals(expected, actual);
     }
